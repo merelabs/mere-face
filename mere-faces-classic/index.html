@@ -1,0 +1,36 @@
+
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>Mere Shell</title>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="css/runner.css">
+
+    <script type="text/javascript" src="qrc:/qtwebchannel/qwebchannel.js"></script>
+    <script type="text/javascript" src="js/wsocket.js"></script>
+    <script type="text/javascript" src="js/connect.js"></script>
+    <script type="text/javascript" src="js/shell.js"></script>
+</head>
+<body class="screen">
+HUMMMM
+<div class="runner">
+
+<div class="runner-box">
+<!--   <input type="text" class="search" placeholder="What are you looking for?" onkeydown="search(event, this.value)">-->
+
+<div id="center-below"><div id="focuses" style="opacity: 1;"><div class="prompt" style="display: block;"><h3>What do you want to run now?</h3>
+<input type="text" onkeypress="search(event, this.value)"></div><ol></ol>
+<div class="message focus-message loading" style="display: block;">Press enter to set your focus</div>
+</div></div>
+</div>
+
+</div>
+
+
+<div class="mere-logo"></div>
+</body>
+</html>
+
