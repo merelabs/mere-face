@@ -1,0 +1,67 @@
+body
+{
+    background-image: url("qrc:/shell/img/mere-logo.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: bottom left;
+    background-position: 4% 94%;
+    background-size: 128px auto;
+    background-color: #002E63;
+    overflow:hidden;
+}
+
+.mere
+{
+
+}
+
+.mere-panel
+{
+    display: flex;
+    justify-content: space-between;
+
+    /*background-color: #010101;*/
+    /*background-color: #002E63;*/
+    /*background-color: #000028;*/
+    background-color: #051536;
+
+}
+
+.mere-panel-top
+{
+    position: fixed;
+    left: 0px !important;
+    top: 0px !important;
+    height: 26px;
+    width: 100%;
+
+
+/*    flex-direction: row !important;*/
+/*    flex-wrap: nowrap;*/
+    flex-flow: row wrap !important;
+}
+
+
+.mere-panel > .mere-applet
+{
+    /*width: 200px;*/
+    margin: 2px;
+    padding: 2px;
+/*    background-color:red;*/
+}
+
+.mere-panel > .mere-applet-brand
+{
+    height: 24px;
+    width: 24px;
+    background-image: url("../img/001-32x21.png");
+    background-repeat: no-repeat
+}
+
+.mere-panel > .mere-applet-user
+{
+    height: 24px;
+    width: 24px;
+    background-image: url("../img/user.png");
+    background-repeat: no-repeat
+}

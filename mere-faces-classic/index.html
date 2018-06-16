@@ -1,36 +1,308 @@
-
+<!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <!--<base href="https://semantic-ui.com/">-->
 
-  <title>Mere Shell</title>
-  <link rel="stylesheet" type="text/css" href="css/style.css">
-  <link rel="stylesheet" type="text/css" href="css/runner.css">
+    <!-- Standard Meta -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+
+    <link rel="image_src" type="image/jpeg" href="/images/logo.png" />
+
+    <title>Menu | Semantic UI</title>
+
+    <script src="https://semantic-ui.com/javascript/library/jquery.min.js"></script>
+    <script>
+
+        window.semantic = {
+            handler: {}
+        };
+    </script>
+
+    <script
+            src="https://code.jquery.com/jquery-3.1.1.min.js"
+            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+            crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" type="text/css" href="lib/semantic/semantic.min.css">
+    <script src="lib/semantic/semantic.min.js"></script>
+
+    <script>
+        semantic.menu = {};
+
+        // ready event
+        semantic.menu.ready = function() {
+
+            // selector cache
+            var
+                    $dropdownItem = $('.container .menu .dropdown .item'),
+                    $popupItem    = $('.container .popup .browse.item'),
+                    $menuItem     = $('.container .menu a.item, .menu .link.item').not($dropdownItem),
+                    $dropdown     = $('.container .menu .ui.dropdown'),
+            // alias
+                    handler = {
+
+                        activate: function() {
+                            if(!$(this).hasClass('dropdown browse')) {
+                                $(this)
+                                        .addClass('active')
+                                        .closest('.ui.menu')
+                                        .find('.item')
+                                        .not($(this))
+                                        .removeClass('active')
+                                ;
+                            }
+                        }
+
+                    }
+                    ;
+
+            $dropdown
+                    .dropdown({
+                        on: 'hover'
+                    })
+            ;
+
+            $('.main.container .ui.search')
+                    .search({
+                        type: 'category',
+                        apiSettings: {
+                            action: 'categorySearch'
+                        }
+                    })
+            ;
+
+            $('.browse.item')
+                    .popup({
+                        popup     : '.popup',
+                        hoverable : true,
+                        position  : 'bottom left',
+                        delay     : {
+                            show: 300,
+                            hide: 800
+                        }
+                    })
+            ;
+
+            $popupItem
+                    .popup({
+                        inline   : true,
+                        hoverable: true,
+                        popup    : '.fluid.popup',
+                        position : 'bottom left',
+                        delay: {
+                            show: 300,
+                            hide: 800
+                        }
+                    })
+            ;
+
+            $menuItem
+                    .on('click', handler.activate)
+            ;
+
+        };
+
+
+        // attach ready event
+        $(document)
+                .ready(semantic.menu.ready)
+        ;
+
+    </script>
+
+    <link rel="stylesheet" type="text/css" href="file:///home/iklash/workspace/mere/mere-faces/mere-faces-classic/css/mere.css">
+    <script>
+        var dayNames = [
+            "Sunday", "Monday", "Tuesday", "Wednesday",
+            "Thursday", "Friday", "Saturday"
+        ];
+
+        var dayShortNames = [
+            "Sun", "Mon", "Tue", "Wed",
+            "Thu", "Fri", "Sat"
+        ];
+
+        var monthNames = [
+            "January", "February", "March",
+            "April", "May", "June", "July",
+            "August", "September", "October",
+            "November", "December"
+        ];
+        var monthShortNames = [
+            "Jan", "Feb", "Mar",
+            "Apr", "May", "Jun", "Jul",
+            "Aug", "Sep", "Oct",
+            "Nov", "Dec"
+        ];
+
+        function startClock()
+        {
+            var today = new Date();
+
+            var day = today.getDate();
+            var month = today.getMonth();
+            var year = today.getFullYear();
+
+            var d = today.getDay();
+            var h = today.getHours();
+            var m = today.getMinutes();
+            var s = today.getSeconds();
+
+            h = checkTime(h);
+            m = checkTime(m);
+            s = checkTime(s);
+            document.getElementById('clock').innerHTML =
+                    dayShortNames[d] + " " + monthShortNames[month] + " " + day + ",&nbsp;&nbsp;" + h + ":" + m + ":" + s;
+            var t = setTimeout(startClock, 500);
+        }
+        function checkTime(i) {
+            if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+            return i;
+        }
+    </script>
+
+    <style>
+        .runner
+        {
+            text-align: center;
+        }
+
+        .runner-box
+        {
+            background-color: yellow;
+            position: relative;
+            margin-top: 15%;
+        }
+
+        .runner-box > input {
+            width: 100%;
+            border-width:0px;
+            background-color: transparent;
+        }
+
+        input:focus{
+            outline: none;
+        }
+
+    </style>
+
+    <link rel="stylesheet" type="text/css" href="file:///home/iklash/workspace/mere/mere-faces/mere-faces-classic/css/style.css">
+    <link rel="stylesheet" type="text/css" href="file:///home/iklash/workspace/mere/mere-faces/mere-faces-classic/css/runner.css">
 
     <script type="text/javascript" src="qrc:/qtwebchannel/qwebchannel.js"></script>
     <script type="text/javascript" src="js/wsocket.js"></script>
     <script type="text/javascript" src="js/connect.js"></script>
     <script type="text/javascript" src="js/shell.js"></script>
 </head>
-<body class="screen">
-HUMMMM
+<body onload="startClock()">
+
+
+<div class="mere mere-panel mere-panel-top">
+    <div class="ui container" style="width: 100% !important;padding-left: 5px;padding-right: 5px;">
+        <div class="ui three text item menu" style="margin: 0px; min-height: 24px;">
+            <div class="ui browse item" style="justify-content: flex-start;">
+                <i class="th icon" style="color: #ffffff;"></i>
+            </div>
+            <div class="ui dropdown item" style="Xbackground-color: green; color: yellow">
+                <span id="clock">&nbsp;</span>
+                <div class="menu">
+                    <div class="item">Profile</div>
+                    <div class="item">Settings</div>
+                    <div class="item">Logout</div>
+                </div>
+            </div>
+            <div class="ui dropdown item" style="Xbackground-color: yellow; color: white;justify-content: flex-end;">
+                Bhuiyan Mohammad Iklash&nbsp; &nbsp;&nbsp;
+                <i class="user icon"></i>
+                <!--<i class="dropdown icon"></i>-->
+                <div class="menu">
+
+                    <div class="item"><div class="image">
+                        <img src="/images/wireframe/image.png">
+                    </div>
+                        <div class="content">
+                            <a class="header">Header</a>
+                            <div class="meta">
+                                <span>Description</span>
+                            </div>
+                            <div class="description">
+                                <p></p>
+                            </div>
+                            <div class="extra">
+                                Additional Details
+                            </div>
+                        </div></div>
+                    <div class="item">System Settings</div>
+                    <div class="item">Lock Screen</div>
+                    <div class="item">Log Out...</div>
+                    <div class="item">Sunpend</div>
+                    <div class="item">Reboot</div>
+                    <div class="item">Shutdown</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ui flowing basic popup">
+            <div class="ui three column relaxed divided grid">
+                <div class="column">
+                    <h4 class="ui header">Development</h4>
+                    <div class="ui link list">
+                        <a class="item">IntelliJ Idea</a>
+                        <a class="item">Qt Creator</a>
+                        <a class="item">Visual Code</a>
+                    </div>
+                </div>
+                <div class="column">
+                    <h4 class="ui header">Internet</h4>
+                    <div class="ui link list">
+                        <a class="item">Chrome</a>
+                        <a class="item">Pidgin</a>
+                    </div>
+                </div>
+                <div class="column">
+                    <h4 class="ui header">Utilities</h4>
+                    <div class="ui link list">
+                        <a class="item">Mere Terminal</a>
+                        <a class="item">Nautilus</a>
+                    </div>
+                </div>
+                <div class="column">
+                    <h4 class="ui header">System</h4>
+                    <div class="ui link list">
+                        <a class="item">Package Manager</a>
+                        <a class="item">Network Setting</a>
+                        <a class="item">System Settings</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="runner">
+    <div class="runner-box">
 
-<div class="runner-box">
-<!--   <input type="text" class="search" placeholder="What are you looking for?" onkeydown="search(event, this.value)">-->
+        <h1 class="ui center aligned icon header" style="color: #ffffff;font-size: 25; font-weight: 300;">
+            <!--<i class="circular search icon"></i>-->
+            What do you want to run now?
+        </h1>
+        <!--<div class="ui transparent input app-search">-->
+            <!--<input type="text" placeholder="Search..." onkeypress="search(event, this.value)">-->
+        <!--</div>-->
 
-<div id="center-below"><div id="focuses" style="opacity: 1;"><div class="prompt" style="display: block;"><h3>What do you want to run now?</h3>
-<input type="text" onkeypress="search(event, this.value)"></div><ol></ol>
-<div class="message focus-message loading" style="display: block;">Press enter to set your focus</div>
-</div></div>
+        <div id="focuses" style="opacity: 1;">
+            <div class="prompt" style="display: block;">
+                <input type="text" onkeypress="search(event, this.value)"></div>
+            <div class="message focus-message loading" style="display: block;">Press enter to set your focus</div>
+        </div>
+    </div>
+
 </div>
-
-</div>
-
 
 <div class="mere-logo"></div>
+
 </body>
 </html>
-
