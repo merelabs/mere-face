@@ -6,7 +6,8 @@ body
     background-position: bottom left;
     background-position: 4% 94%;
     background-size: 128px auto;
-    background-color: #002E63;
+    /*background-color: #002E63;*/
+    background-color: #0C5C0C;
     overflow:hidden;
 }
 
@@ -17,8 +18,7 @@ body
 
 .mere-panel
 {
-    display: flex;
-    justify-content: space-between;
+    position: fixed;
 
     /*background-color: #010101;*/
     /*background-color: #002E63;*/
@@ -29,20 +29,21 @@ body
 
 .mere-panel-top
 {
-    position: fixed;
     left: 0px !important;
     top: 0px !important;
     height: 26px;
     width: 100%;
-
-
-/*    flex-direction: row !important;*/
-/*    flex-wrap: nowrap;*/
-    flex-flow: row wrap !important;
+    background-color: #0C5C0C;
 }
 
 
-.mere-panel > .mere-applet
+.mere-panel-applets
+{
+    background-color: #002E63;
+    /*background-color: red; position: relative; left: 0px; top: 0px*/
+}
+
+.mere-applet
 {
     /*width: 200px;*/
     margin: 2px;
@@ -58,10 +59,32 @@ body
     background-repeat: no-repeat
 }
 
-.mere-panel > .mere-applet-user
+.mere-applet-clock
 {
-    height: 24px;
-    width: 24px;
+    position: fixed;
+    width: 100%;
+    text-align: center;
+
+    color: #ffffff;
+    /*background-color:gray;*/
+}
+
+.mere-applet-apps
+{
+    position: fixed;
+    left: 0px;
+    color: #ffffff;
+    /*background-color:red;*/
+}
+
+.mere-applet-user
+{
+    position: fixed;
+    right: 0px;
+    color: #ffffff;
+    /*background-color:red;*/
+    /*height: 24px;*/
+    /*width: 24px;*/
     background-image: url("../img/user.png");
     background-repeat: no-repeat
 }

@@ -64,14 +64,14 @@
                     })
             ;
 
-            $('.main.container .ui.search')
-                    .search({
-                        type: 'category',
-                        apiSettings: {
-                            action: 'categorySearch'
-                        }
-                    })
-            ;
+//            $('.main.container .ui.search')
+//                    .search({
+//                        type: 'category',
+//                        apiSettings: {
+//                            action: 'categorySearch'
+//                        }
+//                    })
+//            ;
 
             $('.browse.item')
                     .popup({
@@ -85,18 +85,18 @@
                     })
             ;
 
-            $popupItem
-                    .popup({
-                        inline   : true,
-                        hoverable: true,
-                        popup    : '.fluid.popup',
-                        position : 'bottom left',
-                        delay: {
-                            show: 300,
-                            hide: 800
-                        }
-                    })
-            ;
+//            $popupItem
+//                    .popup({
+//                        inline   : true,
+//                        hoverable: true,
+//                        popup    : '.fluid.popup',
+//                        position : 'bottom left',
+//                        delay: {
+//                            show: 300,
+//                            hide: 800
+//                        }
+//                    })
+//            ;
 
             $menuItem
                     .on('click', handler.activate)
@@ -198,85 +198,91 @@
 </head>
 <body onload="startClock()">
 
-
 <div class="mere mere-panel mere-panel-top">
-    <div class="ui container" style="width: 100% !important;padding-left: 5px;padding-right: 5px;">
-        <div class="ui three text item menu" style="margin: 0px; min-height: 24px;">
-            <div class="ui browse item" style="justify-content: flex-start;">
-                <i class="th icon" style="color: #ffffff;"></i>
-            </div>
-            <div class="ui dropdown item" style="Xbackground-color: green; color: yellow">
-                <span id="clock">&nbsp;</span>
-                <div class="menu">
-                    <div class="item">Profile</div>
-                    <div class="item">Settings</div>
-                    <div class="item">Logout</div>
-                </div>
-            </div>
-            <div class="ui dropdown item" style="Xbackground-color: yellow; color: white;justify-content: flex-end;">
-                Bhuiyan Mohammad Iklash&nbsp; &nbsp;&nbsp;
-                <i class="user icon"></i>
-                <!--<i class="dropdown icon"></i>-->
-                <div class="menu">
-
-                    <div class="item"><div class="image">
-                        <img src="/images/wireframe/image.png">
+    <div class="mere-panel-applets">
+        <div class="mere-applet mere-applet-clock">
+            <span id="clock" class="browse item"></span>
+            <div class="ui flowing basic popup" style="width: 500px;">
+                <div class="ui three column relaxed divided grid">
+                    <div class="column">
+                        <h4 class="ui header">Development</h4>
+                        <div class="ui link list">
+                            <a class="item">IntelliJ Idea</a>
+                            <a class="item">Qt Creator</a>
+                            <a class="item">Visual Code</a>
+                        </div>
                     </div>
-                        <div class="content">
-                            <a class="header">Header</a>
-                            <div class="meta">
-                                <span>Description</span>
-                            </div>
-                            <div class="description">
-                                <p></p>
-                            </div>
-                            <div class="extra">
-                                Additional Details
-                            </div>
-                        </div></div>
-                    <div class="item">System Settings</div>
-                    <div class="item">Lock Screen</div>
-                    <div class="item">Log Out...</div>
-                    <div class="item">Sunpend</div>
-                    <div class="item">Reboot</div>
-                    <div class="item">Shutdown</div>
                 </div>
             </div>
         </div>
+        <div class="mere-applet mere-applet-apps" style="margin-left: 10px;">
+            <i class="th icon browse item"></i>
+            <div class="ui flowing basic popup" style="width: 500px;">
+                <div class="ui three column relaxed divided grid">
+                    <div class="column">
+                        <h4 class="ui header">Development</h4>
+                        <div class="ui link list">
+                            <a class="item">IntelliJ Idea</a>
+                            <a class="item">Qt Creator</a>
+                            <a class="item">Visual Code</a>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <h4 class="ui header">Internet</h4>
+                        <div class="ui link list">
+                            <a class="item">Chrome</a>
+                            <a class="item">Pidgin</a>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <h4 class="ui header">Utilities</h4>
+                        <div class="ui link list">
+                            <a class="item">Mere Terminal</a>
+                            <a class="item">Nautilus</a>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <h4 class="ui header">System</h4>
+                        <div class="ui link list">
+                            <a class="item">Package Manager</a>
+                            <a class="item">Network Setting</a>
+                            <a class="item">System Settings</a>
+                        </div>
+                    </div>
 
-        <div class="ui flowing basic popup">
-            <div class="ui three column relaxed divided grid">
-                <div class="column">
-                    <h4 class="ui header">Development</h4>
-                    <div class="ui link list">
-                        <a class="item">IntelliJ Idea</a>
-                        <a class="item">Qt Creator</a>
-                        <a class="item">Visual Code</a>
+                </div>
+            </div>
+        </div>
+        <div class="mere-applet mere-applet-user">
+            <span class="browse item">
+                Bhuiyan Mohammad Iklash&nbsp; &nbsp;&nbsp;
+                <i class="user icon "></i>
+            </span>
+            <div class="ui flowing basic popup" style="width: 500px;">
+                <div class="ui three column relaxed divided grid">
+                    <div class="column">
+                        <h4 class="ui header">Development</h4>
+                        <div class="ui link list">
+                            <a class="item">IntelliJ Idea</a>
+                            <a class="item">Qt Creator</a>
+                            <a class="item">Visual Code</a>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <h4 class="ui header">Internet</h4>
+                        <div class="ui link list">
+                            <a class="item">Chrome</a>
+                            <a class="item">Pidgin</a>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <h4 class="ui header">Utilities</h4>
+                        <div class="ui link list">
+                            <a class="item">Mere Terminal</a>
+                            <a class="item">Nautilus</a>
+                        </div>
                     </div>
                 </div>
-                <div class="column">
-                    <h4 class="ui header">Internet</h4>
-                    <div class="ui link list">
-                        <a class="item">Chrome</a>
-                        <a class="item">Pidgin</a>
-                    </div>
-                </div>
-                <div class="column">
-                    <h4 class="ui header">Utilities</h4>
-                    <div class="ui link list">
-                        <a class="item">Mere Terminal</a>
-                        <a class="item">Nautilus</a>
-                    </div>
-                </div>
-                <div class="column">
-                    <h4 class="ui header">System</h4>
-                    <div class="ui link list">
-                        <a class="item">Package Manager</a>
-                        <a class="item">Network Setting</a>
-                        <a class="item">System Settings</a>
-                    </div>
-                </div>
-
             </div>
         </div>
     </div>
@@ -303,6 +309,19 @@
 </div>
 
 <div class="mere-logo"></div>
+
+<div style="position: fixed; bottom: 25px; right: 25px; width: 100%;">
+    <div style="float: right; color: #ffffff">
+        Power Off&nbsp;
+        <i class="shutdown icon "></i>
+    </div>
+    <div style="float: right; padding-left: 10px;padding-right: 10px;color: #ffffff"> |</div>
+    <div style="float: right; color: #ffffff">
+        Screen Lock &nbsp;
+        <i class="lock icon "></i>
+    </div>
+</div>
+
 
 </body>
 </html>
