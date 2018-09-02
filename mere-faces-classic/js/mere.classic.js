@@ -3,11 +3,8 @@ function search(event, value)
     if(event.keyCode === 13)
     {
         runProgramByName(value);
-       
-
         return false;
     }
-        getUser();
     return true;
 }
 
@@ -32,9 +29,20 @@ function getUser()
     var user = MereConnect.Components.get("user/msIUser");
     user.initWithUsername("iklash");
 
-    user.profile(function(p){
-      alert("1...Profile" + p)
-      alert("2...Profile" + p.getFullname())
-      alert("2...Profile" + p.getFullname(function(name){alert("?" + name)}))
+    user.getProfile(function(profile)
+    {
+        var name = profile["fullname"];
+        if (name)
+        {
+            var element = document.getElementById("userFullname");
+            if (element)
+            {
+                element.innerHTML = profile["fullname"];
+            }
+        }
     });
 }
+
+
+
+getUser()
