@@ -155,7 +155,9 @@
                     dayShortNames[d] + " " + monthShortNames[month] + " " + day + ",&nbsp;&nbsp;" + h + ":" + m + ":" + s;
             var t = setTimeout(startClock, 500);
         }
-        function checkTime(i) {
+
+        function checkTime(i)
+        {
             if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
             return i;
         }
@@ -191,8 +193,10 @@
     <link rel="stylesheet" type="text/css" href="css/runner.css">
 
     <script type="text/javascript" src="js/mere.classic.js"></script>
+    <script type="text/javascript" src="js/mere-user.js"></script>
+    <script type="text/javascript" src="js/mere-app-finder.js"></script>
 </head>
-<body onload="startClock(); ">
+<body onload="initFace()">
 <div class="mere mere-panel mere-panel-top">
     <div class="mere-panel-applets">
         <div class="mere-applet mere-applet-clock">
@@ -290,14 +294,56 @@
             <!--<i class="circular search icon"></i>-->
             What do you want to run now?
         </h1>
-        <!--<div class="ui transparent input app-search">-->
-            <!--<input type="text" placeholder="Search..." onkeypress="search(event, this.value)">-->
-        <!--</div>-->
-
         <div id="focuses" style="opacity: 1;">
             <div class="prompt" style="display: block;">
-                <input type="text" onkeypress="search(event, this.value)"></div>
-            <div class="message focus-message loading" style="display: block;">Press enter to set your focus</div>
+                <input type="text" onkeyup="return search(event, this.value)" Xonkeydown="return runApp(event);">
+            </div>
+            <div>
+                <style>
+
+                    .mere-app-finder-container
+                    {
+                        /*background-color: red;*/
+                        display: flex;
+                        flex-wrap: nowrap;
+                        justify-content : center;
+                    }
+
+                    .mere-app-finder-app
+                    {
+                        width: 70px;
+                        margin: 3px;
+                        /*padding: 5px;*/
+
+                        /*border: 1px solid red;*/
+                    }
+
+                    .mere-app-finder-app-icon
+                    {
+                        width: 52px;
+                        /*border: 1px solid red;*/
+                        border-radius: 50%;
+                    }
+
+                    .mere-app-finder-app-name
+                    {
+                        font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+                        font-size: 12px;
+
+                    }
+
+                </style>
+                <div class="message focus-message loading" style="display: block;">
+                    <!--Press enter to set your focus-->
+                    <span id="mere-app-finder-process-console"></span>
+                    <span id="mere-app-finder-process-time"></span>
+                </div>
+
+                <div id="mere-app-finder-container" class="mere-app-finder-container">
+
+                </div>
+
+            </div>
         </div>
     </div>
 

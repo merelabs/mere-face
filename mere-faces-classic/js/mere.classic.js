@@ -1,3 +1,10 @@
+function initFace()
+{
+    startClock();
+    initUser();
+}
+
+
 function search(event, value)
 {
     if(event.keyCode === 13)
@@ -5,6 +12,21 @@ function search(event, value)
         runProgramByName(value);
         return false;
     }
+    else if(event.ctrlKey)
+    {
+        var appNo = 0;
+        if (event.keyCode >= 48 && event.keyCode <= 57)
+            appNo = event.keyCode - 48;
+        else if (event.keyCode >= 96 && event.keyCode <= 105)
+            appNo = event.keyCode - 96;
+
+        runApp(appNo)
+    }
+    else
+    {
+        findApp(value);
+    }
+
     return true;
 }
 
@@ -24,25 +46,3 @@ function runProgramByPath(path)
     processStarter.start();
 }
 
-function getUser()
-{
-    var user = MereConnect.Components.get("user/msIUser");
-    user.initWithUsername("iklash");
-
-    user.getProfile(function(profile)
-    {
-        var name = profile["fullname"];
-        if (name)
-        {
-            var element = document.getElementById("userFullname");
-            if (element)
-            {
-                element.innerHTML = profile["fullname"];
-            }
-        }
-    });
-}
-
-
-
-getUser()
