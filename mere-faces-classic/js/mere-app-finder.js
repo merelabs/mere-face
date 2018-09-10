@@ -36,7 +36,7 @@ function renderApp(container, app)
 {
     var template =
         '<div class="mere-app-finder-app" ondblclick="runProgramByName(\''+ app["exec"] +'\')">' +
-        '  <img class="mere-app-finder-app-icon" src="' + app["icon"] + '">' +
+        '  <img class="mere-app-finder-app-icon" src="' + (app["icon"]||"http://goo.gl/vyAs27") + '">' +
         '  <div class="mere-app-finder-app-name">' + app["name"] + '</div>' +
         '</div>';
 
