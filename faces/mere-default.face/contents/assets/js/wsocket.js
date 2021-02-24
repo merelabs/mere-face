@@ -1,5 +1,5 @@
 'use strict';
-var wsUri = "ws://localhost:12345";
+var wsUri = "ws://127.0.0.1:12345";
 window.loggedin = false;
 
 window.onload = function()
@@ -20,6 +20,7 @@ window.onload = function()
     };
     socket.onopen = function()
     {
+        // alert(QWebChannel)
         window.channel = new QWebChannel(socket, function(channel)
         {
             //connect to the changed signal of a property

@@ -1,7 +1,7 @@
 var MereConnect = (function () {
     var _components = {
         "system" : {
-            "msiProcess" : "MereProcess"
+            "msIProcess" : "MereProcess"
         }
     }
 
@@ -9,6 +9,7 @@ var MereConnect = (function () {
 
     this.Components = (function () {
         this.get = function(compoenent){
+            
             var connect = "MereProcess";
             return window.channel.objects[connect];
         }
