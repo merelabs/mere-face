@@ -1,54 +1,43 @@
 # mere-face
-What is a **face**? - well, a face is just a fancy name of a user interface bundle. that `mere-shell` can load as desktop interface.
+`mere-face` is the user interface for the desktop of mere system interface. In other words, interface of your desktop enviromnet that you can easily develop and link with mere system. `mere-shell` will load the configured face while it starts up. 
 
 ### Location
-Location of the installed faces are following xdg base directory specifications and will be install in following directories
-
-/usr/local/share/mere/faces
-
-and local instaltion will be placed at
-~/.local/share/mere/faces
-
-
+`mere-face` usages xdg base directory specifications to organize the face bundle. Locally installed bundled are stored in *~/.local/share/mere/faces* and globally or system wise installed bundled will be in */usr/local/share/mere/faces/*.
 
 ### Bundle
-`mere-face` bundle is a structured directory hirerachy with the top level directory with a name ends with *.face* extension. There must be a file named as *index.face* that contains meta information about the face and a *contents* that contains actual interface related resources.
+`mere-face` bundle is a hierarchical structured directory with the top level directory with a name ends with *.face* extension. Withing this bundle there must be a *manifest* file that contains meta information about the face and a *contents* folder that contains actual interface related resources.
 
 ```
-mere-deafault.face/
-                  /manifest
-                  /contents
-                           /index.html
-                           /assets/
-                                  /js
-                                  /css
-                                  /img
-                                  /etc...
-                  
-
-manifest is a key-value pair meta file containing following informaiton.
-face=1.0  
-uuid=
-name=
-note=
-site=
-csum=
-base=contents
-```
-one can easily generate md5 checksum using the following command chain
-```
-find -s contents -type f | xargs md5 | md5
+├── my-face.face
+│   ├── manifest
+│   ├── contents
+│   │   ├── index.html
+|   │   ├── assets
+|   │   │   ├── css
+|   │   │   │   ├── runner.css
+|   │   │   │   └── style.css
+|   │   │   ├── img
+|   │   │   │   └── logo.png
+|   │   │   ├── js
+|   │   │   │   ├── channel.js
+|   │   │   │   ├── connect.js
+|   │   │   │   └── runner.js
+|   │   │   └── lib
+|   │   │       └── qtwebchannel
+|   │   │           └── qwebchannel.js
 ```
 
 
 ### Create
+You can create a face bundle folowing the basic structure shown above, but it is recomneded to use [face client](https://github.com/merelabs/mere-face-cli)
 ```
-mere-face -c my-custom-face
+mere-face-cli -c my-face.face
 ```
-above command will create a skeleton of te bundle in the directory from where the command invoked as my-custom-face.face. Now you can modify the contents of the face and register and use it!
+This will create a skeleton of the bundle in the directory from where the command invoked as my-face.face. Now you can modify the contents of the face and register and use it!
 
 ### Install
+Again you can easily install your desire faces manually by copying the bundle to the appropriate locations - locally install for a specific user or globally to make it available to all the users of the system..
 ```
-mere-face -i my-custom-face
+mere-face-cli -i ./my-face.face
 ```
-
+You can use '-g' flag for global installation.
