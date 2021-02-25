@@ -1,0 +1,43 @@
+.screen
+{
+    background-image: url("qrc:/shell/img/mere-logo.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: bottom left;
+    background-position: 4% 94%;
+    background-size: 128px auto;
+    background-color: #002E63;
+}
+
+
+.mere-logo
+{
+
+}
+
+.search
+{
+    text-align: center;
+}
+
+.search-box {
+  position: absolute;
+  width: 400px;
+/*  height: 200px;*/
+  z-index: 15;
+  top: 25%;
+  left: 50%;
+  margin: -10px 0 0 -200px;
+/*  background: red;*/
+border-bottom: thin solid #ffce00;
+}
+
+.search-box > input {
+    width: 100%;
+    border-width:0px;
+    background-color: transparent;
+}
+
+input:focus{
+    outline: none;
+}

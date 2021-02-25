@@ -1,0 +1,49 @@
+.runner
+{
+    text-align: center;
+}
+
+.runner-box
+{
+    background-color: transparent;
+    position: relative;
+}
+
+.runner-box > input {
+    width: 100%;
+    border-width:0px;
+    background-color: transparent;
+}
+
+input:focus{
+    outline: none;
+}
+
+#focuses .prompt input
+{
+    width:40%;
+    margin:0 auto;
+    padding-top:15px;
+    /*display:block;*/
+    background:0;
+    border:0;
+    border-bottom:2px solid #fff;
+    color:#fff;
+    font-weight:500;
+    outline:0;
+    text-align:center;
+
+    -webkit-transition:border-color .2s ease
+}
+
+#focuses
+{
+    font-size:187.5%;
+    /*line-height:100%*/
+}
+
+#focuses .prompt{margin-bottom:14px}
+
+
+
+.focus-message{margin-top:-2px;display:none;font-size:50%;line-height:100%}

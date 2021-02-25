@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--<base href="https://semantic-ui.com/">-->
+
+    <!-- Standard Meta -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+
+    <link rel="image_src" type="image/jpeg" href="/images/logo.png" />
+
+    <title>Mere | Classic UI</title>
+
+    <script src="https://semantic-ui.com/javascript/library/jquery.min.js"></script>
+    <script>
+
+        window.semantic = {
+            handler: {}
+        };
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+            crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" type="text/css" href="lib/semantic/semantic.min.css">
+    <script src="lib/semantic/semantic.min.js"></script>
+
+    <script>
+        semantic.menu = {};
+
+        // ready event
+        semantic.menu.ready = function() {
+
+            // selector cache
+            var
+                    $dropdownItem = $('.container .menu .dropdown .item'),
+                    $popupItem    = $('.container .popup .browse.item'),
+                    $menuItem     = $('.container .menu a.item, .menu .link.item').not($dropdownItem),
+                    $dropdown     = $('.container .menu .ui.dropdown'),
+            // alias
+                    handler = {
+
+                        activate: function() {
+                            if(!$(this).hasClass('dropdown browse')) {
+                                $(this)
+                                        .addClass('active')
+                                        .closest('.ui.menu')
+                                        .find('.item')
+                                        .not($(this))
+                                        .removeClass('active')
+                                ;
+                            }
+                        }
+
+                    }
+                    ;
+
+            $dropdown
+                    .dropdown({
+                        on: 'hover'
+                    })
+            ;
+
+//            $('.main.container .ui.search')
+//                    .search({
+//                        type: 'category',
+//                        apiSettings: {
+//                            action: 'categorySearch'
+//                        }
+//                    })
+//            ;
+
+            $('.browse.item')
+                    .popup({
+                        popup     : '.popup',
+                        hoverable : true,
+                        position  : 'bottom left',
+                        delay     : {
+                            show: 300,
+                            hide: 800
+                        }
+                    })
+            ;
+
+//            $popupItem
+//                    .popup({
+//                        inline   : true,
+//                        hoverable: true,
+//                        popup    : '.fluid.popup',
+//                        position : 'bottom left',
+//                        delay: {
+//                            show: 300,
+//                            hide: 800
+//                        }
+//                    })
+//            ;
+
+            $menuItem
+                    .on('click', handler.activate)
+            ;
+
+        };
+
+
+        // attach ready event
+        $(document)
+                .ready(semantic.menu.ready)
+        ;
+
+    </script>
+
+    <script>
+        var dayNames = [
+            "Sunday", "Monday", "Tuesday", "Wednesday",
+            "Thursday", "Friday", "Saturday"
+        ];
+
+        var dayShortNames = [
+            "Sun", "Mon", "Tue", "Wed",
+            "Thu", "Fri", "Sat"
+        ];
+
+        var monthNames = [
+            "January", "February", "March",
+            "April", "May", "June", "July",
+            "August", "September", "October",
+            "November", "December"
+        ];
+        var monthShortNames = [
+            "Jan", "Feb", "Mar",
+            "Apr", "May", "Jun", "Jul",
+            "Aug", "Sep", "Oct",
+            "Nov", "Dec"
+        ];
+
+        function startClock()
+        {
+            var today = new Date();
+
+            var day = today.getDate();
+            var month = today.getMonth();
+            var year = today.getFullYear();
+
+            var d = today.getDay();
+            var h = today.getHours();
+            var m = today.getMinutes();
+            var s = today.getSeconds();
+
+            h = checkTime(h);
+            m = checkTime(m);
+            s = checkTime(s);
+            document.getElementById('clock').innerHTML =
+                    dayShortNames[d] + " " + monthShortNames[month] + " " + day + ",&nbsp;&nbsp;" + h + ":" + m + ":" + s;
+            var t = setTimeout(startClock, 500);
+        }
+
+        function checkTime(i)
+        {
+            if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+            return i;
+        }
+    </script>
+
+    <style>
+        .runner
+        {
+            text-align: center;
+        }
+
+        .runner-box
+        {
+            /*background-color: yellow;*/
+            position: relative;
+            margin-top: 15%;
+        }
+
+        .runner-box > input {
+            width: 100%;
+            border-width:0px;
+            background-color: transparent;
+        }
+
+        input:focus{
+            outline: none;
+        }
+
+    </style>
+
+    <link rel="stylesheet" type="text/css" href="css/mere.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/runner.css">
+
+    <script type="text/javascript" src="js/mere.classic.js"></script>
+    <script type="text/javascript" src="js/mere-user.js"></script>
+    <script type="text/javascript" src="js/mere-app-finder.js"></script>
+</head>
+<body onload="initFace()">
+<div class="mere mere-panel mere-panel-top">
+    <div class="mere-panel-applets">
+        <div class="mere-applet mere-applet-clock">
+            <span id="clock" class="Xbrowse item"></span>
+            <div class="ui flowing basic popup" style="width: 500px;">
+                <div class="ui three column relaxed divided grid">
+                    <div class="column">
+                        <h4 class="ui header">Development</h4>
+                        <div class="ui link list">
+                            <a class="item">IntelliJ Idea</a>
+                            <a class="item">Qt Creator</a>
+                            <a class="item">Visual Code</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mere-applet mere-applet-apps" style="margin-left: 10px;">
+            <i class="th icon browse item"></i>
+            <div class="ui flowing basic popup" style="width: 500px;">
+                <div class="ui three column relaxed divided grid">
+                    <div class="column">
+                        <h4 class="ui header">Development</h4>
+                        <div class="ui link list">
+                            <a class="item" onclick="runProgramByPath('/usr/local/idea-IU-141.3058.30/bin/idea.sh')">IntelliJ Idea</a>
+                            <a class="item" onclick="runProgramByPath('/usr/local/bin/qtcreator')">Qt Creator</a>
+                            <a class="item">Visual Code</a>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <h4 class="ui header">Internet</h4>
+                        <div class="ui link list">
+                            <a class="item" onclick="runProgramByPath('/usr/local/bin/chrome')">Chrome</a>
+                            <a class="item">Pidgin</a>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <h4 class="ui header">Utilities</h4>
+                        <div class="ui link list">
+                            <a class="item">Mere Terminal</a>
+                            <a class="item">Nautilus</a>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <h4 class="ui header">System</h4>
+                        <div class="ui link list">
+                            <a class="item">Package Manager</a>
+                            <a class="item">Network Setting</a>
+                            <a class="item">System Settings</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="mere-applet mere-applet-user">
+            <span class="Xbrowse item">
+                <span id="userFullname">User's fullname</span>&nbsp; &nbsp;&nbsp;
+                <i class="user icon "></i>
+            </span>
+            <div class="ui flowing basic popup" style="width: 500px;">
+                <div class="ui three column relaxed divided grid">
+                    <div class="column">
+                        <h4 class="ui header">Development</h4>
+                        <div class="ui link list">
+                            <a class="item">IntelliJ Idea</a>
+                            <a class="item">Qt Creator</a>
+                            <a class="item">Visual Code</a>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <h4 class="ui header">Internet</h4>
+                        <div class="ui link list">
+                            <a class="item">Chrome</a>
+                            <a class="item">Pidgin</a>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <h4 class="ui header">Utilities</h4>
+                        <div class="ui link list">
+                            <a class="item">Mere Terminal</a>
+                            <a class="item">Nautilus</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="runner">
+    <div class="runner-box">
+
+        <h1 class="ui center aligned icon header" style="color: #ffffff;font-size: 25; font-weight: 300;">
+            <!--<i class="circular search icon"></i>-->
+            What do you want to run now?
+        </h1>
+        <div id="focuses" style="opacity: 1;">
+            <div class="prompt" style="display: block;">
+                <input type="text" onkeyup="return search(event, this.value)" Xonkeydown="return runApp(event);">
+            </div>
+            <div>
+                <style>
+
+                    .mere-app-finder-container
+                    {
+                        /*background-color: red;*/
+                        display: flex;
+                        flex-wrap: nowrap;
+                        justify-content : center;
+                    }
+
+                    .mere-app-finder-app
+                    {
+                        width: 70px;
+                        margin: 3px;
+                        /*padding: 5px;*/
+
+                        /*border: 1px solid red;*/
+                    }
+
+                    .mere-app-finder-app-icon
+                    {
+                        width: 52px;
+                        /*border: 1px solid red;*/
+                        border-radius: 50%;
+                    }
+
+                    .mere-app-finder-app-name
+                    {
+                        font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+                        font-size: 12px;
+                        color: white;
+
+                    }
+
+                </style>
+                <div class="message focus-message loading" style="display: block;">
+                    <!--Press enter to set your focus-->
+                    <span id="mere-app-finder-process-console"></span>
+                    <span id="mere-app-finder-process-time"></span>
+                </div>
+
+                <div id="mere-app-finder-container" class="mere-app-finder-container">
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="mere-logo"></div>
+
+<div style="position: fixed; bottom: 4%; right: 2%; width: 100%;">
+    <div style="float: right; color: #ffffff">
+        Power Off&nbsp;
+        <i class="shutdown icon "></i>
+    </div>
+    <div style="float: right; padding-left: 10px;padding-right: 10px;color: #ffffff"> |</div>
+    <div style="float: right; color: #ffffff" onclick="runProgramByPath('/usr/local/bin/xlock')">
+        Screen Lock&nbsp;
+        <i class="lock icon "></i>
+    </div>
+</div>
+
+
+</body>
+</html>
