@@ -36,8 +36,11 @@ mere-face-cli -c my-face.face
 This will create a skeleton of the bundle in the directory from where the command invoked as my-face.face. Now you can modify the contents of the face and register and use it!
 
 ### Install
-Again you can easily install your desire faces manually by copying the bundle to the appropriate locations - locally install for a specific user or globally to make it available to all the users of the system..
+Again you can easily install your desire faces manually by copying the bundle to the appropriate locations - locally install for a specific user or globally to make it available to all the users of the system. Prefered way to install a face is to use the [face client](https://github.com/merelabs/mere-face-cli).
 ```
 mere-face-cli -i ./my-face.face
 ```
 You can use '-g' flag for global installation.
+
+### License ###
+All the code in this repository is licensed under a [BSD-2-Clause License](LICENSE).
