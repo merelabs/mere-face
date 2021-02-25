@@ -1,0 +1,6 @@
+[submodule "cli"]
+	path = cli
+	url = https://github.com/merelabs/mere-face-cli.git
+[submodule "lib"]
+	path = lib
+	url = https://github.com/merelabs/mere-face-lib.git
